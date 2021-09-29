@@ -46,6 +46,13 @@ import {
   RichUtils,
   getDefaultKeyBinding,
 } from "draft-js";
+import { Button, Grid } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import {
+  FormatItalic,
+  FormatBold,
+  FormatUnderlined,
+} from "@mui/icons-material";
 
 class RichEditorExample extends React.Component {
   constructor(props) {
@@ -162,10 +169,25 @@ class RichEditorExample extends React.Component {
             spellCheck={true}
           />
         </div>
-        <InlineStyleControls
-          editorState={editorState}
-          onToggle={this.toggleInlineStyle}
-        />
+        <Grid container >
+          <Grid item>
+            <Button
+              variant="contained"
+              endIcon={<SendIcon />}
+              size="small"
+              sx={{ margin: "0 2px" }}
+            >
+              Send
+            </Button>
+          </Grid>
+          <Grid item flex="1"></Grid>
+          <Grid item sx={{paddingTop:"4px"}} >
+            <InlineStyleControls
+              editorState={editorState}
+              onToggle={this.toggleInlineStyle}
+            />
+          </Grid>
+        </Grid>
       </div>
     );
   }
@@ -203,7 +225,32 @@ class StyleButton extends React.Component {
     if (this.props.active) {
       className += " RichEditor-activeButton";
     }
-
+    var label = this.props.label;
+    var ICON;
+    if (
+      label == "Bold" ||
+      label == "Italic" ||
+      label == "Underline"
+    ) {
+      if (label == "Bold") {
+        ICON = FormatBold;
+      }
+      if (label == "Italic") {
+        ICON = FormatItalic;
+      }
+      if (label == "Underline") {
+        ICON = FormatUnderlined;
+      }
+      return (
+        <span
+          style={{padding:"0px",margin:"1px"}}
+          className={className}
+          onMouseDown={this.onToggle}
+        >
+          <ICON />
+        </span>
+      );
+    }
     return (
       <span
         className={className}
@@ -216,12 +263,12 @@ class StyleButton extends React.Component {
 }
 
 const BLOCK_TYPES = [
-  // //   { label: "H1", style: "header-one" },
-  // //   { label: "H2", style: "header-two" },
-  // //   { label: "H3", style: "header-three" },
-  // //   { label: "H4", style: "header-four" },
-  // //   { label: "H5", style: "header-five" },
-  // //   { label: "H6", style: "header-six" },
+  // { label: "H1", style: "header-one" },
+  // { label: "H2", style: "header-two" },
+  //   { label: "H3", style: "header-three" },
+  //   { label: "H4", style: "header-four" },
+  //   { label: "H5", style: "header-five" },
+  //   { label: "H6", style: "header-six" },
   //   { label: "Blockquote", style: "blockquote" },
   //   { label: "UL", style: "unordered-list-item" },
   //   { label: "OL", style: "ordered-list-item" },
@@ -255,7 +302,7 @@ var INLINE_STYLES = [
   { label: "Bold", style: "BOLD" },
   { label: "Italic", style: "ITALIC" },
   { label: "Underline", style: "UNDERLINE" },
-  //   { label: "Monospace", style: "CODE" },
+  // { label: "Monospace", style: "CODE" },
 ];
 
 const InlineStyleControls = (props) => {
@@ -263,7 +310,9 @@ const InlineStyleControls = (props) => {
     props.editorState.getCurrentInlineStyle();
 
   return (
-    <div className="RichEditor-controls">
+    <div
+      className="RichEditor-controls"
+    >
       {INLINE_STYLES.map((type) => (
         <StyleButton
           key={type.label}

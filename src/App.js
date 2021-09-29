@@ -61,7 +61,7 @@ function App() {
           />
           <InputArea modelView={is_FullScreen} />
           {/* <RichEditorExample /> */}
-          <BottomToolbar />
+          {/* <BottomToolbar /> */}
         </Box>
       </Modal>
     </div>
@@ -75,7 +75,7 @@ function App() {
       >
         <ComposeHeader showModal={toggleModal} />
         <InputArea modelView={is_FullScreen} />
-        <BottomToolbar />
+        {/* <BottomToolbar /> */}
       </Box>
     </div>
   );
