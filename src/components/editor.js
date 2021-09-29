@@ -228,17 +228,17 @@ class StyleButton extends React.Component {
     var label = this.props.label;
     var ICON;
     if (
-      label == "Bold" ||
-      label == "Italic" ||
-      label == "Underline"
+      label === "Bold" ||
+      label === "Italic" ||
+      label === "Underline"
     ) {
-      if (label == "Bold") {
+      if (label === "Bold") {
         ICON = FormatBold;
       }
-      if (label == "Italic") {
+      if (label === "Italic") {
         ICON = FormatItalic;
       }
-      if (label == "Underline") {
+      if (label === "Underline") {
         ICON = FormatUnderlined;
       }
       return (
