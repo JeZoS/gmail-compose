@@ -2,18 +2,19 @@
   box-sizing: border-box;
 }
 
-.App{
+.App {
   border-radius: 10px;
   bottom: 0;
   right: 20px;
   position: absolute;
   min-width: 440px;
+  max-width: 500px;
   overflow: hidden;
-  box-shadow: .5px 1px 25px .5px rgba(0, 0, 0, .3);
+  box-shadow: 0.5px 1px 25px 0.5px rgba(0, 0, 0, 0.3);
   padding-bottom: 8px;
 }
 
-.headerContainer{
+.headerContainer {
   display: flex;
   background-color: #404040;
   padding: 10px 20px;
@@ -26,9 +27,9 @@
 }
 
 .scale-down {
-  transform: scale(.8);
+  transform: scale(0.8);
 }
 
-.header{
+.header {
   font-size: medium;
 }

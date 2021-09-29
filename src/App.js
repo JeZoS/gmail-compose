@@ -3,7 +3,7 @@ import {
   Typography,
   Box,
   Grid,
-  TextField,
+  // TextField,
   Input,
   InputAdornment,
   Button,
@@ -23,6 +23,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
 import CreateIcon from "@mui/icons-material/Create";
+import RichEditorExample from "./components/editor";
 import { useState } from "react";
 
 const style = {
@@ -34,7 +35,7 @@ const style = {
   bgcolor: "background.paper",
   borderTopLeftRadius: "10px",
   borderTopRightRadius: "10px",
-  boxShadow:".5px 1px 25px .5px rgba(0, 0, 0, .3)"
+  boxShadow: ".5px 1px 25px .5px rgba(0, 0, 0, .3)",
 };
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             modelView={is_FullScreen}
           />
           <InputArea modelView={is_FullScreen} />
+          {/* <RichEditorExample /> */}
           <BottomToolbar />
         </Box>
       </Modal>
@@ -175,24 +177,12 @@ export const InputArea = (props) => {
       </Grid>
       <Grid
         item
-        sx={{ margin: "5px 15px", fontSize: ".9rem" }}
+        sx={{
+          margin: "0px 15px",
+          fontSize: ".9rem",
+        }}
       >
-        <TextField
-          id="standard-multiline-static"
-          multiline
-          maxRows={props.modelView ? 21 : 25}
-          minRows={props.modelView ? 19 : 13}
-          variant="standard"
-          fullWidth
-          inputProps={{
-            style: {
-              fontSize: ".8rem",
-            },
-          }}
-          InputProps={{
-            disableUnderline: true,
-          }}
-        />
+        <RichEditorExample />
       </Grid>
     </Grid>
   );
